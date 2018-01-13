@@ -422,7 +422,17 @@
 <h2 id="tensorflow">tensorflow</h2>
 <blockquote>
 <ul>
-<li>&#x4F7F;&#x7528;tf.concat&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;    <pre><code>  tf.concat(values, concat_dim, name=&apos;concat&apos;) # 0 : &#x884C;&#xFF0C; 1: &#x5217;
+<li>tensorflow Introduce
+<img src="tf_high_api.png" alt="">
+<img src="tf_compare.png" alt=""></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>tf xavier init
+<img src="tf_xavier.png" alt=""></p>
+</li>
+<li><p>&#x4F7F;&#x7528;tf.concat&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;    </p>
+<pre><code>  tf.concat(values, concat_dim, name=&apos;concat&apos;) # 0 : &#x884C;&#xFF0C; 1: &#x5217;
   # fc2_*  &#x5927;&#x5C0F;: 1*54;    predict &#x5927;&#x5C0F;&#xFF1A;1*324
   predict = tf.concat([fc2_1, fc2_2, fc2_3, fc2_4, fc2_5, fc2_6], 1)
 </code></pre></li>
@@ -430,7 +440,6 @@
 &#x5728;&#x5904;&#x7406;&#x81EA;&#x7136;&#x56FE;&#x50CF;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x83B7;&#x5F97;&#x7684;&#x50CF;&#x7D20;&#x503C;&#x5728; [0,255] &#x533A;&#x95F4;&#x4E2D;&#xFF0C;&#x5E38;&#x7528;&#x7684;&#x5904;&#x7406;&#x662F;&#x5C06;&#x8FD9;&#x4E9B;&#x50CF;&#x7D20;&#x503C;&#x9664;&#x4EE5; 255&#xFF0C;&#x4F7F;&#x5B83;&#x4EEC;&#x7F29;&#x653E;&#x5230; [0,1] &#x4E2D;.</li>
 <li>tf.clip_by_value(A, min, max)<br>&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;A&#xFF0C;&#x628A;A&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;&#x90FD;&#x538B;&#x7F29;&#x5728;min&#x548C;max&#x4E4B;&#x95F4;&#x3002;&#x5C0F;&#x4E8E;min&#x7684;&#x8BA9;&#x5B83;&#x7B49;&#x4E8E;min&#xFF0C;&#x5927;&#x4E8E;max&#x7684;&#x5143;&#x7D20;&#x7684;&#x503C;&#x7B49;&#x4E8E;max&#x3002;</li>
 </ul>
-</blockquote>
 <hr>
 <h2 id="numpy">numpy</h2>
 <hr>
@@ -479,7 +488,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-01-09T14:32:37.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-10T15:33:36.105Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-01-13T10:43:06.326Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-13T10:43:09.065Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
