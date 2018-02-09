@@ -459,38 +459,41 @@
 <li>&#x4F7F;&#x7528; &gt; &gt;&gt; &gt;&gt;&gt;&#x7B49;&#x6BB5;&#x843D;&#x7F29;&#x8FDB;</li>
 </ol>
 </blockquote>
-<h2 id="conda&#x3001;-nodejs&#x3001;npm">conda&#x3001; node.js&#x3001;npm</h2>
+<hr>
+<h2 id="atom">atom</h2>
+<h4 id="atom-install-jupyter-notebook-package">atom install jupyter notebook package</h4>
 <blockquote>
-<ol>
-<li><a href="https://conda.io/docs/user-guide/tasks/manage-python.html" target="_blank">conda&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7248;&#x672C;python</a></li>
-</ol>
+<ul>
+<li>install node.js  npm  node-gyp</li>
+</ul>
 </blockquote>
-<pre><code>```
-    #step 1. create python env
-    #py27 for python2.7
-    conda create -n py27 python=2.7 anaconda
-    #py36 for python3.6
-    conda create -n python36 python=3.6 anaconda
+<pre><code>- fix bug at line 34 In main.js at /home/$USER/.atom/packages/jupyter-notebook/lib
 
-    #change default to python2.7   - activate py27
-    activate py27
+&#x53C2;&#x8003;[fix notebook bug](https://github.com/cloutiertyler/atom-notebook/commit/cf2ab0e66a8e7b470b7d88a03191bcaed477bf2a)
 
-    #verify new env
-    conda info --envs
-    python --version
+- install jupyter notebook package
+</code></pre><h4 id="conda&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7248;&#x672C;python"><a href="https://conda.io/docs/user-guide/tasks/manage-python.html" target="_blank">conda&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7248;&#x672C;python</a></h4>
+<pre><code>        #step 1. create python env
+        #py27 for python2.7
+        conda create -n py27 python=2.7 anaconda
+        #py36 for python3.6
+        conda create -n python36 python=3.6 anaconda
 
-```
-</code></pre><ol>
-<li><p><a href="https://www.zhihu.com/question/33578075" target="_blank">node.js &#x662F;&#x7528;&#x6765;&#x505A;&#x4EC0;&#x4E48;&#x7684;? </a></p>
-<p>   &#x4E00;&#x79CD;javascript&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF0C; &#x80FD;&#x591F;&#x4F7F;javascript &#x8131;&#x79BB;&#x6D4F;&#x89C8;&#x5668;&#x8FD0;&#x884C;</p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2016/01/npm-install.html" target="_blank">npm&#x6A21;&#x5757;&#x5B89;&#x88C5;&#x673A;&#x5236;&#x7B80;&#x4ECB;</a></p>
-<p>  npm &#x662F;node&#x7684;&#x6A21;&#x5757;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x901A;&#x8FC7;npm install&#x76F8;&#x5173;&#x547D;&#x4EE4; &#x5C31;&#x80FD;&#x5B89;&#x88C5;&#x522B;&#x4EBA;&#x5199;&#x597D;&#x7684;&#x6A21;&#x5757;&#x3002;</p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/2b831714bbff" target="_blank">windows&#x4E0B;&#x5B89;&#x88C5;node-gyp</a></p>
-<p> gyp&#x662F;&#x4E00;&#x79CD;&#x6839;&#x636E;c++&#x6E90;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x7684;&#x5DE5;&#x5177;&#xFF0C; node-gyp&#x662F;&#x4E3A;node&#x7F16;&#x8BD1;c++&#x6269;&#x5C55;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x3002;</p>
-</li>
-</ol>
+        #change default to python2.7   - activate py27
+        activate py27
+
+        #verify new env
+        conda info --envs
+        python --version
+</code></pre><h4 id="nodejs-&#x662F;&#x7528;&#x6765;&#x505A;&#x4EC0;&#x4E48;&#x7684;-"><a href="https://www.zhihu.com/question/33578075" target="_blank">node.js &#x662F;&#x7528;&#x6765;&#x505A;&#x4EC0;&#x4E48;&#x7684;? </a></h4>
+<pre><code>  &#x4E00;&#x79CD;javascript&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF0C; &#x80FD;&#x591F;&#x4F7F;javascript &#x8131;&#x79BB;&#x6D4F;&#x89C8;&#x5668;&#x8FD0;&#x884C;
+</code></pre><h4 id="npm&#x6A21;&#x5757;&#x5B89;&#x88C5;&#x673A;&#x5236;&#x7B80;&#x4ECB;"><a href="http://www.ruanyifeng.com/blog/2016/01/npm-install.html" target="_blank">npm&#x6A21;&#x5757;&#x5B89;&#x88C5;&#x673A;&#x5236;&#x7B80;&#x4ECB;</a></h4>
+<pre><code> npm &#x662F;node&#x7684;&#x6A21;&#x5757;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x901A;&#x8FC7;npm install&#x76F8;&#x5173;&#x547D;&#x4EE4; &#x5C31;&#x80FD;&#x5B89;&#x88C5;&#x522B;&#x4EBA;&#x5199;&#x597D;&#x7684;&#x6A21;&#x5757;&#x3002;
+</code></pre><h4 id="windows&#x4E0B;&#x5B89;&#x88C5;node-gyp"><a href="https://www.jianshu.com/p/2b831714bbff" target="_blank">windows&#x4E0B;&#x5B89;&#x88C5;node-gyp</a></h4>
+<pre><code>gyp&#x662F;&#x4E00;&#x79CD;&#x6839;&#x636E;c++&#x6E90;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x7684;&#x5DE5;&#x5177;&#xFF0C; node-gyp&#x662F;&#x4E3A;node&#x7F16;&#x8BD1;c++&#x6269;&#x5C55;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x3002;
+
+`npm install --global --production windows-build-tools`  (use python2.7 env)
+</code></pre><hr>
 
                                 
                                 </section>
@@ -534,7 +537,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常用软件","level":"1.2.1","depth":2,"next":{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},"previous":{"title":"linux编程","level":"1.2","depth":1,"path":"linux/linux.md","ref":"linux/linux.md","articles":[{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},{"title":"编程","level":"1.2.3","depth":2,"path":"linux/coding/coding.md","ref":"linux/coding/coding.md","articles":[{"title":"C编程","level":"1.2.3.1","depth":3,"path":"linux/coding/C/C.md","ref":"linux/coding/C/C.md","articles":[]},{"title":"C++编程","level":"1.2.3.2","depth":3,"path":"linux/coding/C++/C++.md","ref":"linux/coding/C++/C++.md","articles":[]},{"title":"python编程","level":"1.2.3.3","depth":3,"path":"linux/coding/python/python.md","ref":"linux/coding/python/python.md","articles":[]}]},{"title":"问题总结","level":"1.2.4","depth":2,"path":"linux/problem/problem.md","ref":"linux/problem/problem.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/software/software.md","mtime":"2018-02-09T02:06:54.976Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-09T02:13:35.738Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常用软件","level":"1.2.1","depth":2,"next":{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},"previous":{"title":"linux编程","level":"1.2","depth":1,"path":"linux/linux.md","ref":"linux/linux.md","articles":[{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},{"title":"编程","level":"1.2.3","depth":2,"path":"linux/coding/coding.md","ref":"linux/coding/coding.md","articles":[{"title":"C编程","level":"1.2.3.1","depth":3,"path":"linux/coding/C/C.md","ref":"linux/coding/C/C.md","articles":[]},{"title":"C++编程","level":"1.2.3.2","depth":3,"path":"linux/coding/C++/C++.md","ref":"linux/coding/C++/C++.md","articles":[]},{"title":"python编程","level":"1.2.3.3","depth":3,"path":"linux/coding/python/python.md","ref":"linux/coding/python/python.md","articles":[]}]},{"title":"问题总结","level":"1.2.4","depth":2,"path":"linux/problem/problem.md","ref":"linux/problem/problem.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/software/software.md","mtime":"2018-02-09T03:54:42.242Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-09T03:54:43.493Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
