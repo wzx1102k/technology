@@ -440,7 +440,9 @@
 <hr>
 <h2 id="numpy">numpy</h2>
 <ul>
-<li>&#x77E9;&#x9635;&#x64CD;&#x4F5C;<blockquote>
+<li>&#x77E9;&#x9635;&#x64CD;&#x4F5C;</li>
+</ul>
+<blockquote>
 <ul>
 <li>&#x5168;0&#x77E9;&#x9635; <code>np.zeros()</code></li>
 <li>&#x5168;1&#x77E9;&#x9635; <code>np.ones([1, 4])</code></li>
@@ -451,7 +453,12 @@
 <li>&#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635; <code>np.tri()</code></li>
 <li>&#x8303;&#x5FB7;&#x8499;&#x77E9;&#x9635; <code>np.vander()</code></li>
 <li><code>np.sign(0)</code> &#x8F93;&#x51FA;0&#xFF0C; <code>np.sign(&gt;0)</code>&#x8F93;&#x51FA;1&#xFF0C; <code>np.sign(&lt;0)</code> &#x8F93;&#x51FA;-1</li>
-<li>&#x6570;&#x503C;&#x8FD0;&#x7B97; axis = 0 &#x8868;&#x793A;&#x5217;&#xFF0C; axis = 1  &#x8868;&#x793A;&#x884C;</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>&#x6570;&#x503C;&#x8FD0;&#x7B97; axis = 0 &#x8868;&#x793A;&#x5217;&#xFF0C; axis = 1  &#x8868;&#x793A;&#x884C;</p>
+<blockquote>
+<ul>
 <li>np.mean(a, axis=0) # axis=0&#xFF0C;&#x8BA1;&#x7B97;&#x6BCF;&#x4E00;&#x5217;&#x7684;&#x5747;&#x503C;  </li>
 <li>np.linalg.norm(x, ord=None, axis=None, keepdims=False)   &#x8BA1;&#x7B97;&#x8303;&#x6570;</li>
 </ul>
@@ -471,9 +478,22 @@
 </ul>
 <pre><code>from sklearn.datasets.samples_generator import make_blobs
 
-sklearn.datasets.make_blobs(n_samples=100, n_features=2, centers=3, cluster_std=1.0, center_box=(-10.0, 10.0), shuffle=True, random_state=None)[source]
+sklearn.datasets.make_blobs(
+            n_samples=100,
+            n_features=2,
+            centers=3,
+            cluster_std=1.0,
+            center_box=(-10.0, 10.0),
+            shuffle=True,
+             random_state=None
+)
 
-x, label = make_blobs(n_samples=SAMPLE_CNT, n_features=DIMENSION, centers=KNUM, center_box=(-10, 10))
+x, label = make_blobs(
+    n_samples=SAMPLE_CNT,
+    n_features=DIMENSION,
+    centers=KNUM,
+    center_box=(-10, 10)
+)
 </code></pre><ul>
 <li>svc lib</li>
 </ul>
@@ -493,22 +513,25 @@ x, label = make_blobs(n_samples=SAMPLE_CNT, n_features=DIMENSION, centers=KNUM, 
     decision_function_shape=&#x2019;ovr&#x2019;,
     random_state=None
     )
-&#xFF08;1&#xFF09;C: &#x76EE;&#x6807;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#xFF0C;&#x7528;&#x6765;&#x5E73;&#x8861;&#x5206;&#x7C7B;&#x95F4;&#x9694;margin&#x548C;&#x9519;&#x5206;&#x6837;&#x672C;&#x7684;&#xFF0C;default C = 1.0&#xFF1B;
-&#xFF08;2&#xFF09;kernel&#xFF1A;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x6709;RBF, Linear, Poly, Sigmoid, &#x9ED8;&#x8BA4;&#x7684;&#x662F;&quot;RBF&quot;;
-&#xFF08;3&#xFF09;degree&#xFF1A;if you choose &apos;Poly&apos; in param 2, this is effective, degree&#x51B3;&#x5B9A;&#x4E86;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x6700;&#x9AD8;&#x6B21;&#x5E42;&#xFF1B;
-&#xFF08;4&#xFF09;gamma&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x7684;&#x7CFB;&#x6570;(&apos;Poly&apos;, &apos;RBF&apos; and &apos;Sigmoid&apos;), &#x9ED8;&#x8BA4;&#x662F;gamma = 1 / n_features;
-&#xFF08;5&#xFF09;coef0&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x72EC;&#x7ACB;&#x9879;&#xFF0C;&apos;RBF&apos; and &apos;Poly&apos;&#x6709;&#x6548;&#xFF1B;
-&#xFF08;6&#xFF09;probablity: &#x53EF;&#x80FD;&#x6027;&#x4F30;&#x8BA1;&#x662F;&#x5426;&#x4F7F;&#x7528;(true or false)&#xFF1B;
-&#xFF08;7&#xFF09;shrinking&#xFF1A;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x542F;&#x53D1;&#x5F0F;&#xFF1B;
-&#xFF08;8&#xFF09;tol&#xFF08;default = 1e - 3&#xFF09;: svm&#x7ED3;&#x675F;&#x6807;&#x51C6;&#x7684;&#x7CBE;&#x5EA6;;
-&#xFF08;9&#xFF09;cache_size: &#x5236;&#x5B9A;&#x8BAD;&#x7EC3;&#x6240;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x4EE5;MB&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#xFF1B;
-&#xFF08;10&#xFF09;class_weight: &#x6BCF;&#x4E2A;&#x7C7B;&#x6240;&#x5360;&#x636E;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x60E9;&#x7F5A;&#x53C2;&#x6570;C, &#x7F3A;&#x7701;&#x7684;&#x8BDD;&#x81EA;&#x9002;&#x5E94;&#xFF1B;
-&#xFF08;11&#xFF09;verbose: &#x8DDF;&#x591A;&#x7EBF;&#x7A0B;&#x6709;&#x5173;&#xFF0C;&#x4E0D;&#x5927;&#x660E;&#x767D;&#x5565;&#x610F;&#x601D;&#x5177;&#x4F53;&#xFF1B;
-&#xFF08;12&#xFF09;max_iter: &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#xFF0C;default = 1&#xFF0C; if max_iter = -1, no limited;
-&#xFF08;13&#xFF09;decision_function_shape &#xFF1A; &#x2018;ovo&#x2019; &#x4E00;&#x5BF9;&#x4E00;, &#x2018;ovr&#x2019; &#x591A;&#x5BF9;&#x591A;  or None &#x65E0;, default=None
-&#xFF08;14&#xFF09;random_state &#xFF1A;&#x7528;&#x4E8E;&#x6982;&#x7387;&#x4F30;&#x8BA1;&#x7684;&#x6570;&#x636E;&#x91CD;&#x6392;&#x65F6;&#x7684;&#x4F2A;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x7684;&#x79CD;&#x5B50;&#x3002;
-
-from sklearn.svm import SVC
+</code></pre><blockquote>
+<ul>
+<li>C: &#x76EE;&#x6807;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#xFF0C;&#x7528;&#x6765;&#x5E73;&#x8861;&#x5206;&#x7C7B;&#x95F4;&#x9694;margin&#x548C;&#x9519;&#x5206;&#x6837;&#x672C;&#x7684;&#xFF0C;default C = 1.0&#xFF1B;</li>
+<li>kernel&#xFF1A;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x6709;RBF, Linear, Poly, Sigmoid, &#x9ED8;&#x8BA4;&#x7684;&#x662F;&quot;RBF&quot;;</li>
+<li>degree&#xFF1A;if you choose &apos;Poly&apos; in param 2, this is effective, degree&#x51B3;&#x5B9A;&#x4E86;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x6700;&#x9AD8;&#x6B21;&#x5E42;&#xFF1B;</li>
+<li>gamma&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x7684;&#x7CFB;&#x6570;(&apos;Poly&apos;, &apos;RBF&apos; and &apos;Sigmoid&apos;), &#x9ED8;&#x8BA4;&#x662F;gamma = 1 / n_features;</li>
+<li>coef0&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x72EC;&#x7ACB;&#x9879;&#xFF0C;&apos;RBF&apos; and &apos;Poly&apos;&#x6709;&#x6548;&#xFF1B;</li>
+<li>probablity: &#x53EF;&#x80FD;&#x6027;&#x4F30;&#x8BA1;&#x662F;&#x5426;&#x4F7F;&#x7528;(true or false)&#xFF1B;</li>
+<li>shrinking&#xFF1A;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x542F;&#x53D1;&#x5F0F;&#xFF1B;</li>
+<li>tol&#xFF08;default = 1e - 3&#xFF09;: svm&#x7ED3;&#x675F;&#x6807;&#x51C6;&#x7684;&#x7CBE;&#x5EA6;;</li>
+<li>cache_size: &#x5236;&#x5B9A;&#x8BAD;&#x7EC3;&#x6240;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x4EE5;MB&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#xFF1B;</li>
+<li>class_weight: &#x6BCF;&#x4E2A;&#x7C7B;&#x6240;&#x5360;&#x636E;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x60E9;&#x7F5A;&#x53C2;&#x6570;C, &#x7F3A;&#x7701;&#x7684;&#x8BDD;&#x81EA;&#x9002;&#x5E94;&#xFF1B;</li>
+<li>verbose: &#x8DDF;&#x591A;&#x7EBF;&#x7A0B;&#x6709;&#x5173;&#xFF0C;&#x4E0D;&#x5927;&#x660E;&#x767D;&#x5565;&#x610F;&#x601D;&#x5177;&#x4F53;&#xFF1B;</li>
+<li>max_iter: &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#xFF0C;default = 1&#xFF0C; if max_iter = -1, no limited;</li>
+<li>decision_function_shape &#xFF1A; &#x2018;ovo&#x2019; &#x4E00;&#x5BF9;&#x4E00;, &#x2018;ovr&#x2019; &#x591A;&#x5BF9;&#x591A;  or None &#x65E0;, default=None</li>
+<li>random_state &#xFF1A;&#x7528;&#x4E8E;&#x6982;&#x7387;&#x4F30;&#x8BA1;&#x7684;&#x6570;&#x636E;&#x91CD;&#x6392;&#x65F6;&#x7684;&#x4F2A;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x7684;&#x79CD;&#x5B50;&#x3002;</li>
+</ul>
+</blockquote>
+<pre><code>from sklearn.svm import SVC
 
 clf = SVC(decision_function_shape=&apos;ovo&apos;) #ovo&#x4E3A;&#x4E00;&#x5BF9;&#x4E00;  
 clf.fit(X,Y)  
@@ -557,7 +580,7 @@ dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x683
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-02-13T11:14:31.879Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-13T11:14:33.156Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-02-13T11:22:01.192Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-13T11:22:02.332Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
