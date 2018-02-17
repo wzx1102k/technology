@@ -422,41 +422,39 @@
 <p>linux&#x76F8;&#x5173;&#x603B;&#x7ED3;</p>
 <hr>
 <ul>
-<li>apt lock</li>
+<li>apt lock
+```
+E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)</li>
 </ul>
-<pre><code>E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
-
-E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
-
-sudo rm /var/lib/apt/lists/lock
-
-sudo rm /var/cache/apt/archives/lock
-
-sudo rm /var/lib/dpkg/lock
-</code></pre><ul>
-<li>lsof</li>
-</ul>
-<pre><code>$ lsof /dev/video0
+<p>E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?</p>
+<p>sudo rm /var/lib/apt/lists/lock</p>
+<p>sudo rm /var/cache/apt/archives/lock</p>
+<p>sudo rm /var/lib/dpkg/lock</p>
+<pre><code>- lsof
+</code></pre><p>$ lsof /dev/video0
 COMMAND   PID   USER   FD   TYPE DEVICE SIZE/OFF  NODE NAME
 cheese  31526 kirill  mem    CHR   81,0          18321 /dev/video0
-cheese  31526 kirill   23u   CHR   81,0      0t0 18321 /dev/video0
-</code></pre><p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x53F7;&#x5360;&#x7528;&#x60C5;&#x51B5;(eg. Port80)</p>
-<pre><code>[root@localhost www.wzx1102k.com]# lsof -i:80
+cheese  31526 kirill   23u   CHR   81,0      0t0 18321 /dev/video0</p>
+<pre><code>
+    &#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x53F7;&#x5360;&#x7528;&#x60C5;&#x51B5;(eg. Port80)
+</code></pre><p>[root@localhost www.wzx1102k.com]# lsof -i:80
 COMMAND  PID USER   FD   TYPE    DEVICE SIZE/OFF NODE NAME
-nginx   1449 root    6u  IPv4 423446322      0t0  TCP *:http (LISTEN)
-nginx   2012  www    6u  IPv4 423446322      0t0  TCP *:http (LISTEN)
-</code></pre><ul>
-<li>df, du, fdisk<ul>
-<li>&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5939; size<pre><code>[root@localhost webpy]# du -sh
+nginx   1449 root    6u  IPv4 423446322      0t0  TCP <em>:http (LISTEN)
+nginx   2012  www    6u  IPv4 423446322      0t0  TCP </em>:http (LISTEN)</p>
+<pre><code>- df, du, fdisk
+    + &#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5939; size
+</code></pre><pre><code>[root@localhost webpy]# du -sh
 3.2M    .
-</code></pre></li>
-<li>&#x67E5;&#x770B;&#x5206;&#x533A;&#x8FD8;&#x5269;&#x591A;&#x5C11;&#x7A7A;&#x95F4;<pre><code>[root@localhost /]# df -hl
+```
++ &#x67E5;&#x770B;&#x5206;&#x533A;&#x8FD8;&#x5269;&#x591A;&#x5C11;&#x7A7A;&#x95F4;
+```
+[root@localhost /]# df -hl
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/simfs       10G  4.1G  6.0G  41% /
 none            256M  4.0K  256M   1% /dev
 none            256M     0  256M   0% /dev/shm
-</code></pre></li>
-<li>&#x67E5;&#x770B;&#x7269;&#x7406;&#x786C;&#x76D8;
+```
++ &#x67E5;&#x770B;&#x7269;&#x7406;&#x786C;&#x76D8;
 ```
 root@ubuntu:/home/cloud/workspace/project/documents# fdisk -l
 Disk /dev/sda: 60 GiB, 64424509440 bytes, 125829120 sectors
@@ -464,16 +462,14 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0x8971d5ea</li>
-</ul>
-</li>
-</ul>
-<p>Device     Boot     Start       End   Sectors Size Id Type
+Disk identifier: 0x8971d5ea
+
+Device     Boot     Start       End   Sectors Size Id Type
 /dev/sda1  *         2048 119539711 119537664  57G 83 Linux
 /dev/sda2       119541758 125827071   6285314   3G  5 Extended
 /dev/sda5       119541760 125827071   6285312   3G 82 Linux swap / Solaris
-    ```</p>
-
+```
+</code></pre>
                                 
                                 </section>
                             
@@ -516,7 +512,7 @@ Disk identifier: 0x8971d5ea</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"linux编程","level":"1.2","depth":1,"next":{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},"previous":{"title":"Introduce","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/linux.md","mtime":"2018-02-17T14:13:07.545Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-17T14:13:08.875Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"linux编程","level":"1.2","depth":1,"next":{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},"previous":{"title":"Introduce","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/linux.md","mtime":"2018-02-17T14:19:21.721Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-17T14:19:22.922Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
