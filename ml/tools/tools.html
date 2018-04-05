@@ -448,23 +448,39 @@ loss = tf.reduce_mean(-tf.reduce_sum(y_true * tf.log(predict), [1]))
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=predict, labels=y_true))
 </code></pre></li>
 </ul>
-<h4 id="tensorflow-use-gpu">tensorflow use gpu</h4>
+<h4 id="&#x65B0;&#x670D;&#x52A1;&#x5668;&#x5982;&#x4F55;&#x914D;&#x7F6E;gpu&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1F;">&#x65B0;&#x670D;&#x52A1;&#x5668;&#x5982;&#x4F55;&#x914D;&#x7F6E;GPU&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1F;</h4>
 <ul>
+<li>&#x67E5;&#x770B;&#x662F;&#x5426;&#x652F;&#x6301;GPU<pre><code>! lspci -nnk | grep -i nvidia
+</code></pre></li>
+<li>&#x5B89;&#x88C5;cuda lib <a href="https://cloud.google.com/compute/docs/gpus/add-gpus#verify-driver-install" target="_blank">Adding GPUs to Instances</a><pre><code>#!/bin/bash
+echo &quot;Checking for CUDA and installing.&quot;
+# Check for CUDA and try to install.
+if ! dpkg-query -W cuda-8-0; then
+  # The 16.04 installer works with 16.10.
+  curl -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  sudo apt-get update
+  sudo apt-get install cuda-8-0 -y
+fi
+# Enable persistence mode
+sudo nvidia-smi -pm 1
+#performance optimizing
+#for K80
+sudo nvidia-smi -ac 2505,875
+sudo nvidia-smi --auto-boost-default=DISABLE
+#check cuda version
+nvcc -V
+</code></pre></li>
+<li><a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank">NVIDIA&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;cudnn lib</a><pre><code>dpkg -i ./libcudnn6_6.0.21-1+cuda8.0_amd64.deb
+</code></pre></li>
+<li><a href="https://github.com/tensorflow/tensorflow/issues/15604" target="_blank">&#x5B89;&#x88C5;gpu tensorflow</a></li>
+</ul>
+<p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x7248;&#x672C;&#x4E0D;&#x5BF9;&#x9F50;&#x95EE;&#x9898;&#xFF0C;&#x67E5;&#x770B;tensorflow &#x4F9D;&#x8D56;cuda version&#x3002; <code>pip3 install --upgrade tensorflow-gpu==1.4</code></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/16238458/cannot-create-context-on-nvidia-device-with-ecc-enabled" target="_blank">failed call to cuDevicePrimaryCtxReta in: CUDA_ERROR_ECC_UNCORRECTABLE</a><pre><code>nvidia-smi --reset-ecc-errors=0 -g 0
+</code></pre></li>
 <li>&#x67E5;&#x770B;&#x5E73;&#x53F0;&#x662F;&#x5426;&#x652F;&#x6301;gpu<pre><code>from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
-[name: &quot;/device:CPU:0&quot;
-device_type: &quot;CPU&quot;
-memory_limit: 268435456
-locality {
-}
-incarnation: 16925341359735686096, name: &quot;/device:GPU:0&quot;
-device_type: &quot;GPU&quot;
-memory_limit: 292159488
-locality {
- bus_id: 1
-}
-incarnation: 6286052981776494181
-physical_device_desc: &quot;device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7&quot;]
 </code></pre></li>
 <li><a href="https://www.zhihu.com/question/263850405" target="_blank">&#x5982;&#x4F55;&#x67E5;&#x770B;tensorflow&#x8DD1;&#x7684;&#x662F;gpu&#x7248;&#x672C;&#x8FD8;&#x662F;cpu&#x7248;&#x672C;&#xFF1F;</a><pre><code># Creates a graph.
 a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name=&apos;a&apos;)
@@ -493,40 +509,6 @@ MatMul: /job:localhost/replica:0/task:0/device:GPU:0
       for i in range(20000):
           ...
 </code></pre></li>
-<li><p>&#x65B0;&#x670D;&#x52A1;&#x5668;&#x5982;&#x4F55;&#x914D;&#x7F6E;GPU&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1F;</p>
-<ul>
-<li>&#x67E5;&#x770B;&#x662F;&#x5426;&#x652F;&#x6301;GPU
-  <code>! lspci -nnk | grep -i nvidia</code></li>
-<li>&#x5B89;&#x88C5;cuda lib <a href="https://cloud.google.com/compute/docs/gpus/add-gpus#verify-driver-install" target="_blank">Adding GPUs to Instances</a><pre><code>#!/bin/bash
-echo &quot;Checking for CUDA and installing.&quot;
-# Check for CUDA and try to install.
-if ! dpkg-query -W cuda-8-0; then
-# The 16.04 installer works with 16.10.
-curl -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-sudo apt-get update
-sudo apt-get install cuda-8-0 -y
-fi
-# Enable persistence mode
-sudo nvidia-smi -pm 1
-#performance optimizing
-#for K80
-sudo nvidia-smi -ac 2505,875
-sudo nvidia-smi --auto-boost-default=DISABLE
-#check cuda version
-nvcc -V
-</code></pre></li>
-<li><p><a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank">NVIDIA&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;cudnn lib</a>
- <code>dpkg -i ./libcudnn6_6.0.21-1+cuda8.0_amd64.deb</code></p>
-</li>
-<li><p><a href="https://github.com/tensorflow/tensorflow/issues/15604" target="_blank">&#x5B89;&#x88C5;gpu tensorflow</a>
-  &#x5982;&#x679C;&#x51FA;&#x73B0;&#x7248;&#x672C;&#x4E0D;&#x5BF9;&#x9F50;&#x95EE;&#x9898;&#xFF0C;&#x67E5;&#x770B;tensorflow &#x4F9D;&#x8D56;cuda version&#x3002; <code>pip3 install --upgrade tensorflow-gpu==1.4</code></p>
-</li>
-<li><p><a href="https://stackoverflow.com/questions/16238458/cannot-create-context-on-nvidia-device-with-ecc-enabled" target="_blank">failed call to cuDevicePrimaryCtxReta in: CUDA_ERROR_ECC_UNCORRECTABLE</a>
-<code>nvidia-smi --reset-ecc-errors=0 -g 0</code></p>
-</li>
-</ul>
-</li>
 </ul>
 <hr>
 <h2 id="numpy">numpy</h2>
@@ -682,7 +664,7 @@ dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x683
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T03:32:58.530Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:33:00.031Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T03:38:31.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:38:33.236Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
