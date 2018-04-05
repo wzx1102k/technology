@@ -520,6 +520,32 @@ MatMul: /job:localhost/replica:0/task:0/device:GPU:0
           ...
 </code></pre></li>
 </ul>
+<h4 id="&#x8FDC;&#x7A0B;&#x4F7F;&#x7528;google-cloud&#x7684;jupyter-notebook">&#x8FDC;&#x7A0B;&#x4F7F;&#x7528;google cloud&#x7684;jupyter notebook</h4>
+<ul>
+<li>&#x670D;&#x52A1;&#x5668;&#x5B89;&#x88C5;notebook<pre><code>pip3 install jupyter
+</code></pre></li>
+<li><a href="https://blog.csdn.net/bobobe/article/details/79764600" target="_blank">&#x8BBE;&#x7F6E;google cloud &#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;</a><br>&#x8BBE;&#x7F6E;&#x5165;&#x7AD9;&#x89C4;&#x5219;&#xFF0C;&#x6DFB;&#x52A0;jupyter notebook&#x7AEF;&#x53E3;&#x53F7;&#x5141;&#x8BB8;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;&#x3002;(&#x51FA;&#x7AD9;&#x5C31;&#x662F;&#x4F60;&#x8BBF;&#x95EE;&#x5916;&#x7F51; &#x5165;&#x7AD9;&#x5C31;&#x662F;&#x5916;&#x7F51;&#x8BBF;&#x95EE;&#x4F60;)</li>
+<li>&#x751F;&#x6210;jupyter &#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BC6;&#x7801;<br>&#x672C;&#x5730;&#x4F7F;&#x7528;jupyter notebook&#x5236;&#x4F5C;&#x767B;&#x9646;&#x5BC6;&#x7801;<pre><code>from notebook.auth import passwd
+passwd()
+Enter password: &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+Verify password: &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+&apos;sha1:....&apos;
+</code></pre></li>
+<li>&#x751F;&#x6210;jupyter notebook&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>&#x751F;&#x6210;<code>~/.jupyter/jupyter_notebook_config.py</code><pre><code>jupyter notebook --generate-config
+</code></pre></li>
+<li>&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>&#x5728; jupyter_notebook_config.py &#x4E2D;&#x627E;&#x5230;&#x4E0B;&#x9762;&#x7684;&#x884C;&#xFF0C;&#x53D6;&#x6D88;&#x6CE8;&#x91CA;&#x5E76;&#x4FEE;&#x6539;&#x3002;<pre><code>c.NotebookApp.ip=&apos;*&apos;
+c.NotebookApp.password = u&apos;sha:ce...&#x521A;&#x624D;&#x590D;&#x5236;&#x7684;&#x90A3;&#x4E2A;&#x5BC6;&#x6587;&apos;
+c.NotebookApp.open_browser = False
+c.NotebookApp.port =8888 #google cloud&#x9632;&#x706B;&#x5899;&#x5141;&#x8BB8;&#x7AEF;&#x53E3;&#x53F7;
+</code></pre></li>
+<li>&#x767B;&#x9646; jupyter notebook<ul>
+<li>ssh &#x6267;&#x884C;<code>jupyter notebook</code></li>
+<li>&#x7F51;&#x9875;&#x8F93;&#x5165;<a href="http://[google" target="_blank">http://[google</a> cloud static ip]
+:[port]</li>
+<li>&#x8F93;&#x5165;&#x5236;&#x4F5C;&#x7684;&#x767B;&#x9646;&#x5BC6;&#x7801;</li>
+</ul>
+</li>
+</ul>
 <hr>
 <h2 id="numpy">numpy</h2>
 <ul>
@@ -674,7 +700,7 @@ dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x683
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T03:46:00.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:46:01.774Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T14:46:51.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T14:46:54.019Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
