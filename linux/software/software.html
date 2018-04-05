@@ -518,6 +518,33 @@ change
 <p><code>conda install -c conda-forge miktex</code> (&#x4F7F;&#x7528;proxifier &amp; ss  &#x7FFB;&#x5899;&#x5B89;&#x88C5;&#x901F;&#x5EA6;&#x5FEB;)</p>
 <h5 id="how-to-write-latex-in-ipython-notebook"><a href="https://stackoverflow.com/questions/13208286/how-to-write-latex-in-ipython-notebook" target="_blank">How to write LaTeX in IPython Notebook?</a></h5>
 <p>use <code>%%latex</code>  in jupyter notebook cell</p>
+<h4 id="jupyter-notebook-&#x8F6C;pdf">jupyter notebook &#x8F6C;PDF</h4>
+<ul>
+<li>conda install texlive<ul>
+<li><code>conda config --add channels clinicalgraphics</code></li>
+<li><code>conda install -c clinicalgraphics texlive-core</code></li>
+</ul>
+</li>
+<li>conda update tlmgr<ul>
+<li>download update-tlmgr-latest.exe from  <a href="http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe" target="_blank">http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe</a></li>
+<li>&#x6267;&#x884C;update-tlmgr-latest.exe,  &#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x9009;&#x62E9;<code>anaconda\Library</code></li>
+</ul>
+</li>
+<li>tlmgr install pkg<ul>
+<li><code>tlmgr install ucs</code></li>
+<li><code>tlmgr install collectbox</code></li>
+<li><code>tlmgr install adjustbox</code></li>
+<li><code>tlmgr install enumitem</code></li>
+<li><code>tlmgr install collection-fontsrecommended</code></li>
+</ul>
+</li>
+<li><code>jupyter nbconvert ml.ipynb --to pdf</code></li>
+<li>&#x53E6;&#x4E00;&#x79CD;&#x8F6C;&#x6362;pdf&#x65B9;&#x6CD5;<ul>
+<li><code>jupyter nbconvert ml.ipynb --to latex</code></li>
+<li><code>pdflatex ml.tex</code></li>
+</ul>
+</li>
+</ul>
 <h4 id="latex-tutorial"><a href="https://www.youtube.com/watch?v=SoDv0qhyysQ" target="_blank">latex tutorial</a></h4>
 <p> (markdown &#x53EA;&#x652F;&#x6301;latex&#x516C;&#x5F0F;&#xFF0C; &#x4E0D;&#x652F;&#x6301;&#x6392;&#x7248;)</p>
 <pre><code>\begin{algorithm}  
@@ -593,6 +620,37 @@ change
 </ul>
 </li>
 </ul>
+<h2 id="google-cloud">google cloud</h2>
+<h4 id="colab-use-google-gpu">colab use google gpu</h4>
+<p>&#x53C2;&#x8003; <a href="https://zhuanlan.zhihu.com/p/33125415" target="_blank">&#x60F3;&#x514D;&#x8D39;&#x7528;&#x8C37;&#x6B4C;&#x8D44;&#x6E90;&#x8BAD;&#x7EC3;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF1F;Colab &#x8BE6;&#x7EC6;&#x4F7F;&#x7528;&#x6559;&#x7A0B; &#x2014;&#x2014; Jinkey &#x539F;&#x521B;</a>
+<a href="https://zhuanlan.zhihu.com/p/33344222" target="_blank">&#x8585;&#x8D44;&#x672C;&#x4E3B;&#x4E49;&#x7F8A;&#x6BDB;&#xFF0C;&#x7528;Google&#x514D;&#x8D39;GPU</a></p>
+<ul>
+<li>&#x5728;google&#x4E91;&#x7AEF;&#x786C;&#x76D8;&#x66F4;&#x591A;&#x4E2D;&#x6DFB;&#x52A0;colaboratory&#x5E94;&#x7528;</li>
+<li>&#x65B0;&#x5EFA;colaboratory&#x7B14;&#x8BB0;&#x672C;(.ipynb)</li>
+<li>&#x8FDE;&#x63A5;&#x5230;&#x7533;&#x8BF7;&#x7684;&#x514D;&#x8D39;google cloud (300$/&#x5E74;)&#xFF0C; &#x8F93;&#x5165;&#x9A8C;&#x8BC1;token key</li>
+</ul>
+<pre><code>!apt-get install -y -qq software-properties-common python-software-properties module-init-tools
+!add-apt-repository -y ppa:alessandro-strada/ppa 2&gt;&amp;1 &gt; /dev/null
+!apt-get update -qq 2&gt;&amp;1 &gt; /dev/null
+!apt-get -y install -qq google-drive-ocamlfuse fuse
+from google.colab import auth
+auth.authenticate_user()
+from oauth2client.client import GoogleCredentials
+creds = GoogleCredentials.get_application_default()
+import getpass
+!google-drive-ocamlfuse -headless -id={creds.client_id} -secret={creds.client_secret} &lt; /dev/null 2&gt;&amp;1 | grep URL
+vcode = getpass.getpass()
+!echo {vcode} | google-drive-ocamlfuse -headless -id={creds.client_id} -secret={creds.client_secret}
+</code></pre><ul>
+<li>&#x5C06;google&#x4E91;&#x7AEF;&#x786C;&#x76D8;&#x94FE;&#x63A5;&#x5230;google cloud</li>
+</ul>
+<pre><code>!mkdir -p drive
+!google-drive-ocamlfuse drive
+</code></pre><ul>
+<li>&#x67E5;&#x770B;google cloud gpu &#x8BBE;&#x5907;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<pre><code>from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+</code></pre></li>
+</ul>
 
                                 
                                 </section>
@@ -636,7 +694,7 @@ change
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常用软件","level":"1.2.1","depth":2,"next":{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},"previous":{"title":"linux编程","level":"1.2","depth":1,"path":"linux/linux.md","ref":"linux/linux.md","articles":[{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},{"title":"编程","level":"1.2.3","depth":2,"path":"linux/coding/coding.md","ref":"linux/coding/coding.md","articles":[{"title":"C编程","level":"1.2.3.1","depth":3,"path":"linux/coding/C/C.md","ref":"linux/coding/C/C.md","articles":[]},{"title":"C++编程","level":"1.2.3.2","depth":3,"path":"linux/coding/C++/C++.md","ref":"linux/coding/C++/C++.md","articles":[]},{"title":"python编程","level":"1.2.3.3","depth":3,"path":"linux/coding/python/python.md","ref":"linux/coding/python/python.md","articles":[]}]},{"title":"问题总结","level":"1.2.4","depth":2,"path":"linux/problem/problem.md","ref":"linux/problem/problem.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/software/software.md","mtime":"2018-02-17T14:13:07.545Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-18T01:14:26.461Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常用软件","level":"1.2.1","depth":2,"next":{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},"previous":{"title":"linux编程","level":"1.2","depth":1,"path":"linux/linux.md","ref":"linux/linux.md","articles":[{"title":"常用软件","level":"1.2.1","depth":2,"path":"linux/software/software.md","ref":"linux/software/software.md","articles":[]},{"title":"环境配置","level":"1.2.2","depth":2,"path":"linux/env/env.md","ref":"linux/env/env.md","articles":[]},{"title":"编程","level":"1.2.3","depth":2,"path":"linux/coding/coding.md","ref":"linux/coding/coding.md","articles":[{"title":"C编程","level":"1.2.3.1","depth":3,"path":"linux/coding/C/C.md","ref":"linux/coding/C/C.md","articles":[]},{"title":"C++编程","level":"1.2.3.2","depth":3,"path":"linux/coding/C++/C++.md","ref":"linux/coding/C++/C++.md","articles":[]},{"title":"python编程","level":"1.2.3.3","depth":3,"path":"linux/coding/python/python.md","ref":"linux/coding/python/python.md","articles":[]}]},{"title":"问题总结","level":"1.2.4","depth":2,"path":"linux/problem/problem.md","ref":"linux/problem/problem.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/software/software.md","mtime":"2018-04-05T03:22:40.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:22:42.878Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
