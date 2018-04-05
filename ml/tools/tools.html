@@ -421,34 +421,42 @@
                                 <h1 id="&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5E38;&#x7528;tool&#x603B;&#x7ED3;">&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5E38;&#x7528;tool&#x603B;&#x7ED3;</h1>
 <hr>
 <h2 id="tensorflow">tensorflow</h2>
-<h4 id="tensorflow-introduce">tensorflow Introduce</h4>
+<h4 id="tensorflow-general">tensorflow general</h4>
 <p><img src="tf_high_api.png" alt="">
 <img src="tf_compare.png" alt=""></p>
-<h4 id="tf-xavier-init">tf xavier init</h4>
-<p><img src="tf_xavier.png" alt=""></p>
-<h4 id="&#x4F7F;&#x7528;tfconcat&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;">&#x4F7F;&#x7528;tf.concat&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;</h4>
-<pre><code>    tf.concat(values, concat_dim, name=&apos;concat&apos;) # 0 : &#x884C;&#xFF0C; 1: &#x5217;
-    # fc2_*  &#x5927;&#x5C0F;: 1*54;    predict &#x5927;&#x5C0F;&#xFF1A;1*324
-    predict = tf.concat([fc2_1, fc2_2, fc2_3, fc2_4, fc2_5, fc2_6], 1)
-</code></pre><h4 id="mnist-&#x6570;&#x636E;&#x96C6;&#x5408;-image-&#x662F;&#x6709;&#x505A;&#x8FC7;&#x6B63;&#x5219;&#x5316;&#x7684;">mnist &#x6570;&#x636E;&#x96C6;&#x5408; image &#x662F;&#x6709;&#x505A;&#x8FC7;&#x6B63;&#x5219;&#x5316;&#x7684;</h4>
-<p>&#x53C2;&#x8003;<a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank">&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;</a>
+<ul>
+<li><p>tf xavier init
+<img src="tf_xavier.png" alt=""></p>
+</li>
+<li><p>&#x4F7F;&#x7528;tf.concat&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;    </p>
+<pre><code>  tf.concat(values, concat_dim, name=&apos;concat&apos;) # 0 : &#x884C;&#xFF0C; 1: &#x5217;
+  # fc2_*  &#x5927;&#x5C0F;: 1*54;    predict &#x5927;&#x5C0F;&#xFF1A;1*324
+  predict = tf.concat([fc2_1, fc2_2, fc2_3, fc2_4, fc2_5, fc2_6], 1)
+</code></pre></li>
+<li><p>mnist &#x6570;&#x636E;&#x96C6;&#x5408; image &#x662F;&#x6709;&#x505A;&#x8FC7;&#x6B63;&#x5219;&#x5316;&#x7684;<br>&#x53C2;&#x8003;<a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank">&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;</a>
 &#x5728;&#x5904;&#x7406;&#x81EA;&#x7136;&#x56FE;&#x50CF;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x83B7;&#x5F97;&#x7684;&#x50CF;&#x7D20;&#x503C;&#x5728; [0,255] &#x533A;&#x95F4;&#x4E2D;&#xFF0C;&#x5E38;&#x7528;&#x7684;&#x5904;&#x7406;&#x662F;&#x5C06;&#x8FD9;&#x4E9B;&#x50CF;&#x7D20;&#x503C;&#x9664;&#x4EE5; 255&#xFF0C;&#x4F7F;&#x5B83;&#x4EEC;&#x7F29;&#x653E;&#x5230; [0,1] &#x4E2D;.</p>
-<h4 id="tfclipbyvaluea-min-max">tf.clip_by_value(A, min, max)</h4>
-<p>&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;A&#xFF0C;&#x628A;A&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;&#x90FD;&#x538B;&#x7F29;&#x5728;min&#x548C;max&#x4E4B;&#x95F4;&#x3002;&#x5C0F;&#x4E8E;min&#x7684;&#x8BA9;&#x5B83;&#x7B49;&#x4E8E;min&#xFF0C;&#x5927;&#x4E8E;max&#x7684;&#x5143;&#x7D20;&#x7684;&#x503C;&#x7B49;&#x4E8E;max&#x3002;</p>
-<h4 id="whats-the-difference-between-softmax-and-softmaxcrossentropywithlogits">[What&apos;s the difference between softmax and softmax_cross_entropy_with_logits?</h4>
-<p>](<a href="https://stackoverflow.com/questions/34240703/whats-the-difference-between-softmax-and-softmax-cross-entropy-with-logits" target="_blank">https://stackoverflow.com/questions/34240703/whats-the-difference-between-softmax-and-softmax-cross-entropy-with-logits</a>)</p>
-<pre><code>- softmax:  &#x9700;&#x8981;&#x989D;&#x5916;&#x5199;loss function
-</code></pre><pre><code>predict = tf.nn.softmax(tf.add(tf.matmul(x, W),  b))
+</li>
+<li><p>tf.clip_by_value(A, min, max)<br>&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;A&#xFF0C;&#x628A;A&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;&#x90FD;&#x538B;&#x7F29;&#x5728;min&#x548C;max&#x4E4B;&#x95F4;&#x3002;&#x5C0F;&#x4E8E;min&#x7684;&#x8BA9;&#x5B83;&#x7B49;&#x4E8E;min&#xFF0C;&#x5927;&#x4E8E;max&#x7684;&#x5143;&#x7D20;&#x7684;&#x503C;&#x7B49;&#x4E8E;max&#x3002;</p>
+</li>
+<li><p><a href="https://stackoverflow.com/questions/34240703/whats-the-difference-between-softmax-and-softmax-cross-entropy-with-logits" target="_blank">What&apos;s the difference between softmax and softmax_cross_entropy_with_logits?
+</a></p>
+</li>
+<li><p>softmax:  &#x9700;&#x8981;&#x989D;&#x5916;&#x5199;loss function</p>
+<pre><code>predict = tf.nn.softmax(tf.add(tf.matmul(x, W),  b))
 loss = tf.reduce_mean(-tf.reduce_sum(y_true * tf.log(predict), [1]))
-</code></pre><pre><code>- softmax_cross_entropy_with_logit  &#x8BA1;&#x7B97;softmax &#x4EE5;&#x53CA;&#x4EA4;&#x53C9;&#x71B5;(loss)
-</code></pre><pre><code>predict = tf.add(tf.matmul(x, W),  b)
+</code></pre></li>
+<li>softmax_cross_entropy_with_logit  &#x8BA1;&#x7B97;softmax &#x4EE5;&#x53CA;&#x4EA4;&#x53C9;&#x71B5;(loss)<pre><code>predict = tf.add(tf.matmul(x, W),  b)
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=predict, labels=y_true))
-</code></pre><h4 id="tensorflow-use-gpu">tensorflow use gpu</h4>
-<pre><code>- &#x67E5;&#x770B;&#x5E73;&#x53F0;&#x662F;&#x5426;&#x652F;&#x6301;gpu
-</code></pre><pre><code>from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
-
-[name: &quot;/device:CPU:0&quot;
+</code></pre></li>
+</ul>
+<h4 id="tensorflow-use-gpu">tensorflow use gpu</h4>
+<ul>
+<li>&#x67E5;&#x770B;&#x5E73;&#x53F0;&#x662F;&#x5426;&#x652F;&#x6301;gpu
+```
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()</li>
+</ul>
+<p>[name: &quot;/device:CPU:0&quot;
  device_type: &quot;CPU&quot;
  memory_limit: 268435456
  locality {
@@ -460,27 +468,26 @@ device_lib.list_local_devices()
    bus_id: 1
  }
  incarnation: 6286052981776494181
- physical_device_desc: &quot;device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7&quot;]
-</code></pre><pre><code>- [&#x5982;&#x4F55;&#x67E5;&#x770B;tensorflow&#x8DD1;&#x7684;&#x662F;gpu&#x7248;&#x672C;&#x8FD8;&#x662F;cpu&#x7248;&#x672C;&#xFF1F;](https://www.zhihu.com/question/263850405)
-</code></pre><pre><code># Creates a graph.
-a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name=&apos;a&apos;)
+ physical_device_desc: &quot;device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7&quot;]</p>
+<pre><code>- [&#x5982;&#x4F55;&#x67E5;&#x770B;tensorflow&#x8DD1;&#x7684;&#x662F;gpu&#x7248;&#x672C;&#x8FD8;&#x662F;cpu&#x7248;&#x672C;&#xFF1F;](https://www.zhihu.com/question/263850405)
+</code></pre><h1 id="creates-a-graph">Creates a graph.</h1>
+<p>a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name=&apos;a&apos;)
 b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name=&apos;b&apos;)
-c = tf.matmul(a, b)
-# Creates a session with log_device_placement set to True.
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
-# Runs the op.
-print(sess.run(c))
-
-Device mapping:
+c = tf.matmul(a, b)</p>
+<h1 id="creates-a-session-with-logdeviceplacement-set-to-true">Creates a session with log_device_placement set to True.</h1>
+<p>sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))</p>
+<h1 id="runs-the-op">Runs the op.</h1>
+<p>print(sess.run(c))</p>
+<p>Device mapping:
 /job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: Tesla K40c, pci bus
 id: 0000:05:00.0
 b: /job:localhost/replica:0/task:0/device:GPU:0
 a: /job:localhost/replica:0/task:0/device:GPU:0
 MatMul: /job:localhost/replica:0/task:0/device:GPU:0
 [[ 22.  28.]
- [ 49.  64.]]
-</code></pre><pre><code>- [tensorflow use gpu train mnist cnn](https://stackoverflow.com/questions/44868914/using-gpu-vs-cpu-in-tensorflow-deep-mnist-example)
-</code></pre><pre><code>with tf.device(&apos;/gpu:0&apos;):
+ [ 49.  64.]]</p>
+<pre><code>- [tensorflow use gpu train mnist cnn](https://stackoverflow.com/questions/44868914/using-gpu-vs-cpu-in-tensorflow-deep-mnist-example)
+</code></pre><p>with tf.device(&apos;/gpu:0&apos;):
     W_conv1 = weight_variable([5, 5, 1, 32])
     b_conv1 = bias_variable([32])
     ...
@@ -488,92 +495,80 @@ MatMul: /job:localhost/replica:0/task:0/device:GPU:0
         sess.run(tf.global_variables_initializer())
         ...
         for i in range(20000):
-            ...
-</code></pre><pre><code>- &#x65B0;&#x670D;&#x52A1;&#x5668;&#x5982;&#x4F55;&#x914D;&#x7F6E;GPU&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1F;
+            ...</p>
+<pre><code>- &#x65B0;&#x670D;&#x52A1;&#x5668;&#x5982;&#x4F55;&#x914D;&#x7F6E;GPU&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1F;
     + &#x67E5;&#x770B;&#x662F;&#x5426;&#x652F;&#x6301;GPU
-    `! lspci -nnk | grep -i nvidia`
+        `! lspci -nnk | grep -i nvidia`
     +  &#x5B89;&#x88C5;cuda lib [Adding GPUs to Instances](https://cloud.google.com/compute/docs/gpus/add-gpus#verify-driver-install)
-</code></pre><pre><code>#!/bin/bash
-echo &quot;Checking for CUDA and installing.&quot;
-# Check for CUDA and try to install.
-if ! dpkg-query -W cuda-8-0; then
-    # The 16.04 installer works with 16.10.
-    curl -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-    dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-    sudo apt-get update
-    sudo apt-get install cuda-8-0 -y
-fi
-# Enable persistence mode
-sudo nvidia-smi -pm 1
-
-#performance optimizing
-#for K80
-sudo nvidia-smi -ac 2505,875
-sudo nvidia-smi --auto-boost-default=DISABLE
-
-#check cuda version
-nvcc -V
-</code></pre><pre><code>    +  [NVIDIA&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;cudnn lib](https://developer.nvidia.com/rdp/cudnn-download)
-    `dpkg -i ./libcudnn6_6.0.21-1+cuda8.0_amd64.deb`
+</code></pre><h1 id="binbash">!/bin/bash</h1>
+<p>echo &quot;Checking for CUDA and installing.&quot;</p>
+<h1 id="check-for-cuda-and-try-to-install">Check for CUDA and try to install.</h1>
+<p>if ! dpkg-query -W cuda-8-0; then</p>
+<pre><code># The 16.04 installer works with 16.10.
+curl -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda-8-0 -y
+</code></pre><p>fi</p>
+<h1 id="enable-persistence-mode">Enable persistence mode</h1>
+<p>sudo nvidia-smi -pm 1</p>
+<h1 id="performance-optimizing">performance optimizing</h1>
+<h1 id="for-k80">for K80</h1>
+<p>sudo nvidia-smi -ac 2505,875
+sudo nvidia-smi --auto-boost-default=DISABLE</p>
+<h1 id="check-cuda-version">check cuda version</h1>
+<p>nvcc -V</p>
+<pre><code>    +  [NVIDIA&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;cudnn lib](https://developer.nvidia.com/rdp/cudnn-download)
+        `dpkg -i ./libcudnn6_6.0.21-1+cuda8.0_amd64.deb`
 
     + [&#x5B89;&#x88C5;gpu tensorflow](https://github.com/tensorflow/tensorflow/issues/15604)
-    &#x5982;&#x679C;&#x51FA;&#x73B0;&#x7248;&#x672C;&#x4E0D;&#x5BF9;&#x9F50;&#x95EE;&#x9898;&#xFF0C;&#x67E5;&#x770B;tensorflow &#x4F9D;&#x8D56;cuda version&#x3002; `pip3 install --upgrade tensorflow-gpu==1.4`
+        &#x5982;&#x679C;&#x51FA;&#x73B0;&#x7248;&#x672C;&#x4E0D;&#x5BF9;&#x9F50;&#x95EE;&#x9898;&#xFF0C;&#x67E5;&#x770B;tensorflow &#x4F9D;&#x8D56;cuda version&#x3002; `pip3 install --upgrade tensorflow-gpu==1.4`
 
     + [failed call to cuDevicePrimaryCtxReta in: CUDA_ERROR_ECC_UNCORRECTABLE](https://stackoverflow.com/questions/16238458/cannot-create-context-on-nvidia-device-with-ecc-enabled)
-    `nvidia-smi --reset-ecc-errors=0 -g 0`
-</code></pre><hr>
-<h2 id="numpy">numpy</h2>
-<ul>
-<li>&#x77E9;&#x9635;&#x64CD;&#x4F5C;</li>
-</ul>
-<blockquote>
-<ul>
-<li>&#x5168;0&#x77E9;&#x9635; <code>np.zeros()</code></li>
-<li>&#x5168;1&#x77E9;&#x9635; <code>np.ones([1, 4])</code></li>
-<li>&#x586B;&#x5145;&#x77E9;&#x9635; <code>np.full([2, 3], 1.2)</code></li>
-<li>&#x968F;&#x673A;&#x77E9;&#x9635; <code>np.empty([2, 3])</code></li>
-<li>&#x5355;&#x4F4D;&#x77E9;&#x9635;(&#x5BF9;&#x89D2;&#x77E9;&#x9635;) <code>np.identity(3) / eye()</code></li>
-<li>&#x5BF9;&#x89D2;&#x77E9;&#x9635;(&#x5E26;&#x504F;&#x79FB;) <code>np.diagflat([1, 2, 3], k=1)</code></li>
-<li>&#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635; <code>np.tri()</code></li>
-<li>&#x8303;&#x5FB7;&#x8499;&#x77E9;&#x9635; <code>np.vander()</code></li>
-<li><code>np.sign(0)</code> &#x8F93;&#x51FA;0&#xFF0C; <code>np.sign(&gt;0)</code>&#x8F93;&#x51FA;1&#xFF0C; <code>np.sign(&lt;0)</code> &#x8F93;&#x51FA;-1
-&#x5408;&#x5E76;&#x5217;&#x77E9;&#x9635;  <code>np.vstack((a,b))</code> ,&#x5408;&#x5E76;&#x884C;&#x77E9;&#x9635;  <code>np.hstack((a,b))</code></li>
-</ul>
-</blockquote>
-<ul>
-<li>&#x6570;&#x503C;&#x8FD0;&#x7B97; axis = 0 &#x8868;&#x793A;&#x5217;&#xFF0C; axis = 1  &#x8868;&#x793A;&#x884C;</li>
-</ul>
-<blockquote>
-<ul>
-<li>np.mean(a, axis=0) # axis=0&#xFF0C;&#x8BA1;&#x7B97;&#x6BCF;&#x4E00;&#x5217;&#x7684;&#x5747;&#x503C;  </li>
-<li>np.linalg.norm(x, ord=None, axis=None, keepdims=False)   &#x8BA1;&#x7B97;&#x8303;&#x6570;&#xFF0C; &#x9ED8;&#x8BA4;&#x4E8C;&#x8303;&#x6570; &#x6C42;&#x6B27;&#x5F0F;&#x8DDD;&#x79BB;/&#x5411;&#x91CF;&#x5185;&#x79EF;</li>
-<li><code>np.shape</code> &#x6C42;&#x77E9;&#x9635;&#x5927;&#x5C0F;,  <code>np.shape[0]</code> &#x6C42;&#x884C;&#x5927;&#x5C0F;, <code>np.shape[1]</code> &#x6C42;&#x5217;&#x5927;&#x5C0F;</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="matplotlib">matplotlib</h2>
-<ul>
-<li><p>matplotlib.pyplot.gca
-  use <code>plt.gca()</code>  to get current polar axes on the current figure.</p>
-</li>
-<li><p>&#x4E0D;&#x540C;&#x989C;&#x8272;&#x7EBF;&#x6761;&#x8FDB;&#x884C;&#x6807;&#x6CE8;</p>
-</li>
-</ul>
-<pre><code>import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
+`nvidia-smi --reset-ecc-errors=0 -g 0`
 
-rbf_label = mpatches.Patch(color=&apos;b&apos;, label=&apos;rbf&apos;)
+
+*****
+## numpy
+
+- &#x77E9;&#x9635;&#x64CD;&#x4F5C;
+
+&gt; - &#x5168;0&#x77E9;&#x9635; `np.zeros()`
+&gt; - &#x5168;1&#x77E9;&#x9635; `np.ones([1, 4])`
+&gt; - &#x586B;&#x5145;&#x77E9;&#x9635; `np.full([2, 3], 1.2)`
+&gt; - &#x968F;&#x673A;&#x77E9;&#x9635; `np.empty([2, 3])`
+&gt; - &#x5355;&#x4F4D;&#x77E9;&#x9635;(&#x5BF9;&#x89D2;&#x77E9;&#x9635;) `np.identity(3) / eye()`
+&gt; - &#x5BF9;&#x89D2;&#x77E9;&#x9635;(&#x5E26;&#x504F;&#x79FB;) `np.diagflat([1, 2, 3], k=1)`
+&gt; - &#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635; `np.tri()`
+&gt; - &#x8303;&#x5FB7;&#x8499;&#x77E9;&#x9635; `np.vander()`
+&gt; - `np.sign(0)` &#x8F93;&#x51FA;0&#xFF0C; `np.sign(&gt;0)`&#x8F93;&#x51FA;1&#xFF0C; `np.sign(&lt;0)` &#x8F93;&#x51FA;-1
+&gt; &#x5408;&#x5E76;&#x5217;&#x77E9;&#x9635;  `np.vstack((a,b))` ,&#x5408;&#x5E76;&#x884C;&#x77E9;&#x9635;  `np.hstack((a,b))`
+
+- &#x6570;&#x503C;&#x8FD0;&#x7B97; axis = 0 &#x8868;&#x793A;&#x5217;&#xFF0C; axis = 1  &#x8868;&#x793A;&#x884C;
+
+&gt; - np.mean(a, axis=0) # axis=0&#xFF0C;&#x8BA1;&#x7B97;&#x6BCF;&#x4E00;&#x5217;&#x7684;&#x5747;&#x503C;  
+&gt; - np.linalg.norm(x, ord=None, axis=None, keepdims=False)   &#x8BA1;&#x7B97;&#x8303;&#x6570;&#xFF0C; &#x9ED8;&#x8BA4;&#x4E8C;&#x8303;&#x6570; &#x6C42;&#x6B27;&#x5F0F;&#x8DDD;&#x79BB;/&#x5411;&#x91CF;&#x5185;&#x79EF;
+&gt; - `np.shape` &#x6C42;&#x77E9;&#x9635;&#x5927;&#x5C0F;,  `np.shape[0]` &#x6C42;&#x884C;&#x5927;&#x5C0F;, `np.shape[1]` &#x6C42;&#x5217;&#x5927;&#x5C0F;
+
+****
+## matplotlib
+- matplotlib.pyplot.gca
+    use `plt.gca()`  to get current polar axes on the current figure.
+
+- &#x4E0D;&#x540C;&#x989C;&#x8272;&#x7EBF;&#x6761;&#x8FDB;&#x884C;&#x6807;&#x6CE8;
+</code></pre><p>import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt</p>
+<p>rbf_label = mpatches.Patch(color=&apos;b&apos;, label=&apos;rbf&apos;)
 poly_label = mpatches.Patch(color=&apos;r&apos;, label=&apos;poly&apos;)
 plt.legend(handles=[rbf_label, poly_label])
-plt.show()
-</code></pre><hr>
-<h2 id="sklearn">sklearn</h2>
-<ul>
-<li>make_blob &#x751F;&#x6210;&#x805A;&#x7C7B;&#x6D4B;&#x8BD5;&#x6570;&#x636E;</li>
-</ul>
-<pre><code>from sklearn.datasets.samples_generator import make_blobs
+plt.show()</p>
+<pre><code>
+****
+## sklearn
 
-sklearn.datasets.make_blobs(
+- make_blob &#x751F;&#x6210;&#x805A;&#x7C7B;&#x6D4B;&#x8BD5;&#x6570;&#x636E;
+</code></pre><p>from sklearn.datasets.samples_generator import make_blobs</p>
+<p>sklearn.datasets.make_blobs(
             n_samples=100,
             n_features=2,
             centers=3,
@@ -581,19 +576,16 @@ sklearn.datasets.make_blobs(
             center_box=(-10.0, 10.0),
             shuffle=True,
              random_state=None
-)
-
-x, label = make_blobs(
+)</p>
+<p>x, label = make_blobs(
     n_samples=SAMPLE_CNT,
     n_features=DIMENSION,
     centers=KNUM,
     center_box=(-10, 10)
-)
-</code></pre><ul>
-<li>svc lib</li>
-</ul>
-<pre><code>class sklearn.svm.SVC(  
-    C=1.0,    larger values of C, smaller-margin hyperplane, less misclassifying
+)</p>
+<pre><code>
+- svc lib
+</code></pre><p>class sklearn.svm.SVC(<br>    C=1.0,    larger values of C, smaller-margin hyperplane, less misclassifying
     kernel=&#x2019;rbf&#x2019;, &#x2018;linear&#x2019;, &#x2018;poly&#x2019;, &#x2018;rbf&#x2019;, &#x2018;sigmoid&#x2019;, &#x2018;precomputed&#x2019;
     degree=3,  Degree of the polynomial kernel function (&#x2018;poly&#x2019;). Ignored by all other kernels.
     gamma=&#x2019;auto&#x2019;,
@@ -607,31 +599,25 @@ x, label = make_blobs(
     max_iter=-1,
     decision_function_shape=&#x2019;ovr&#x2019;,
     random_state=None
-    )
-</code></pre><blockquote>
-<ul>
-<li>C: &#x76EE;&#x6807;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#xFF0C;&#x7528;&#x6765;&#x5E73;&#x8861;&#x5206;&#x7C7B;&#x95F4;&#x9694;margin&#x548C;&#x9519;&#x5206;&#x6837;&#x672C;&#x7684;&#xFF0C;default C = 1.0&#xFF1B;</li>
-<li>kernel&#xFF1A;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x6709;RBF, Linear, Poly, Sigmoid, &#x9ED8;&#x8BA4;&#x7684;&#x662F;&quot;RBF&quot;;</li>
-<li>degree&#xFF1A;if you choose &apos;Poly&apos; in param 2, this is effective, degree&#x51B3;&#x5B9A;&#x4E86;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x6700;&#x9AD8;&#x6B21;&#x5E42;&#xFF1B;</li>
-<li>gamma&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x7684;&#x7CFB;&#x6570;(&apos;Poly&apos;, &apos;RBF&apos; and &apos;Sigmoid&apos;), &#x9ED8;&#x8BA4;&#x662F;gamma = 1 / n_features;</li>
-<li>coef0&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x72EC;&#x7ACB;&#x9879;&#xFF0C;&apos;RBF&apos; and &apos;Poly&apos;&#x6709;&#x6548;&#xFF1B;</li>
-<li>probablity: &#x53EF;&#x80FD;&#x6027;&#x4F30;&#x8BA1;&#x662F;&#x5426;&#x4F7F;&#x7528;(true or false)&#xFF1B;</li>
-<li>shrinking&#xFF1A;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x542F;&#x53D1;&#x5F0F;&#xFF1B;</li>
-<li>tol&#xFF08;default = 1e - 3&#xFF09;: svm&#x7ED3;&#x675F;&#x6807;&#x51C6;&#x7684;&#x7CBE;&#x5EA6;;</li>
-<li>cache_size: &#x5236;&#x5B9A;&#x8BAD;&#x7EC3;&#x6240;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x4EE5;MB&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#xFF1B;</li>
-<li>class_weight: &#x6BCF;&#x4E2A;&#x7C7B;&#x6240;&#x5360;&#x636E;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x60E9;&#x7F5A;&#x53C2;&#x6570;C, &#x7F3A;&#x7701;&#x7684;&#x8BDD;&#x81EA;&#x9002;&#x5E94;&#xFF1B;</li>
-<li>verbose: &#x8DDF;&#x591A;&#x7EBF;&#x7A0B;&#x6709;&#x5173;&#xFF0C;&#x4E0D;&#x5927;&#x660E;&#x767D;&#x5565;&#x610F;&#x601D;&#x5177;&#x4F53;&#xFF1B;</li>
-<li>max_iter: &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#xFF0C;default = 1&#xFF0C; if max_iter = -1, no limited;</li>
-<li>decision_function_shape &#xFF1A; &#x2018;ovo&#x2019; &#x4E00;&#x5BF9;&#x4E00;, &#x2018;ovr&#x2019; &#x591A;&#x5BF9;&#x591A;  or None &#x65E0;, default=None</li>
-<li>random_state &#xFF1A;&#x7528;&#x4E8E;&#x6982;&#x7387;&#x4F30;&#x8BA1;&#x7684;&#x6570;&#x636E;&#x91CD;&#x6392;&#x65F6;&#x7684;&#x4F2A;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x7684;&#x79CD;&#x5B50;&#x3002;</li>
-</ul>
-</blockquote>
-<pre><code>from sklearn.svm import SVC
-
-clf = SVC(decision_function_shape=&apos;ovo&apos;) #ovo&#x4E3A;&#x4E00;&#x5BF9;&#x4E00;  
-clf.fit(X,Y)  
-dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6837;&#x672C;&#x8DDD;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x7684;&#x8DDD;&#x79BB;
-</code></pre><hr>
+    )</p>
+<pre><code>&gt;- C: &#x76EE;&#x6807;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#xFF0C;&#x7528;&#x6765;&#x5E73;&#x8861;&#x5206;&#x7C7B;&#x95F4;&#x9694;margin&#x548C;&#x9519;&#x5206;&#x6837;&#x672C;&#x7684;&#xFF0C;default C = 1.0&#xFF1B;
+&gt;- kernel&#xFF1A;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x6709;RBF, Linear, Poly, Sigmoid, &#x9ED8;&#x8BA4;&#x7684;&#x662F;&quot;RBF&quot;;
+&gt;- degree&#xFF1A;if you choose &apos;Poly&apos; in param 2, this is effective, degree&#x51B3;&#x5B9A;&#x4E86;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x6700;&#x9AD8;&#x6B21;&#x5E42;&#xFF1B;
+&gt;- gamma&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x7684;&#x7CFB;&#x6570;(&apos;Poly&apos;, &apos;RBF&apos; and &apos;Sigmoid&apos;), &#x9ED8;&#x8BA4;&#x662F;gamma = 1 / n_features;
+&gt;- coef0&#xFF1A;&#x6838;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x72EC;&#x7ACB;&#x9879;&#xFF0C;&apos;RBF&apos; and &apos;Poly&apos;&#x6709;&#x6548;&#xFF1B;
+&gt;- probablity: &#x53EF;&#x80FD;&#x6027;&#x4F30;&#x8BA1;&#x662F;&#x5426;&#x4F7F;&#x7528;(true or false)&#xFF1B;
+&gt;- shrinking&#xFF1A;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x542F;&#x53D1;&#x5F0F;&#xFF1B;
+&gt;- tol&#xFF08;default = 1e - 3&#xFF09;: svm&#x7ED3;&#x675F;&#x6807;&#x51C6;&#x7684;&#x7CBE;&#x5EA6;;
+&gt;- cache_size: &#x5236;&#x5B9A;&#x8BAD;&#x7EC3;&#x6240;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x4EE5;MB&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#xFF1B;
+&gt;- class_weight: &#x6BCF;&#x4E2A;&#x7C7B;&#x6240;&#x5360;&#x636E;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x60E9;&#x7F5A;&#x53C2;&#x6570;C, &#x7F3A;&#x7701;&#x7684;&#x8BDD;&#x81EA;&#x9002;&#x5E94;&#xFF1B;
+&gt;- verbose: &#x8DDF;&#x591A;&#x7EBF;&#x7A0B;&#x6709;&#x5173;&#xFF0C;&#x4E0D;&#x5927;&#x660E;&#x767D;&#x5565;&#x610F;&#x601D;&#x5177;&#x4F53;&#xFF1B;
+&gt;- max_iter: &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#xFF0C;default = 1&#xFF0C; if max_iter = -1, no limited;
+&gt;- decision_function_shape &#xFF1A; &#x2018;ovo&#x2019; &#x4E00;&#x5BF9;&#x4E00;, &#x2018;ovr&#x2019; &#x591A;&#x5BF9;&#x591A;  or None &#x65E0;, default=None
+&gt;- random_state &#xFF1A;&#x7528;&#x4E8E;&#x6982;&#x7387;&#x4F30;&#x8BA1;&#x7684;&#x6570;&#x636E;&#x91CD;&#x6392;&#x65F6;&#x7684;&#x4F2A;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x7684;&#x79CD;&#x5B50;&#x3002;
+</code></pre><p>from sklearn.svm import SVC</p>
+<p>clf = SVC(decision_function_shape=&apos;ovo&apos;) #ovo&#x4E3A;&#x4E00;&#x5BF9;&#x4E00;<br>clf.fit(X,Y)<br>dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6837;&#x672C;&#x8DDD;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x7684;&#x8DDD;&#x79BB;
+```</p>
+<hr>
 
                                 
                                 </section>
@@ -675,7 +661,7 @@ dec = clf.decision_function([[x, y]])    #&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x683
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T03:22:40.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:22:42.878Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工具总结","level":"1.3.5","depth":2,"next":{"title":"计算机视觉","level":"1.4","depth":1,"path":"vision/vision.md","ref":"vision/vision.md","articles":[{"title":"常用资料","level":"1.4.1","depth":2,"path":"vision/data/data.md","ref":"vision/data/data.md","articles":[]},{"title":"调试记录","level":"1.4.2","depth":2,"path":"vision/debug/debug.md","ref":"vision/debug/debug.md","articles":[]},{"title":"论文整理","level":"1.4.3","depth":2,"path":"vision/paper/paper.md","ref":"vision/paper/paper.md","articles":[]},{"title":"问题收集","level":"1.4.4","depth":2,"path":"vision/problem/problem.md","ref":"vision/problem/problem.md","articles":[]}]},"previous":{"title":"问题收集","level":"1.3.4","depth":2,"path":"ml/problem/problem.md","ref":"ml/problem/problem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ml/tools/tools.md","mtime":"2018-04-05T03:27:29.644Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-05T03:27:31.128Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
